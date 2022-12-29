@@ -72,6 +72,5 @@ h1 {
     flex-direction: column;
 }
 .btn.operation {
-    height: calc(60vw/5);
     flex: 1 1;
 }

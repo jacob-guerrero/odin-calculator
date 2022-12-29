@@ -25,3 +25,12 @@ function operate (operator, a, b) {
             return;
     }
 }
+
+const numbers = document.querySelectorAll('#panel')
+numbers.forEach(number => {
+    number.addEventListener ('click', (e) => {
+        console.log(e.target);
+        const display = document.querySelector('#display p');
+        display.textContent = e.target.textContent;
+    })
+});

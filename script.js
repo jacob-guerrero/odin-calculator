@@ -17,17 +17,18 @@ function operate (operator, a, b) {
             return add(a, b);
         case '-':
             return subtract(a, b);
-        case '*':
+        case '×':
             return multiply(a, b);
-        case '/':
+        case '÷':
             return divide(a, b);
         default:
             return;
     }
 }
 
-let operator;
+let operator = '';
 let digit = '';
+let nums = [];
 const panel = document.querySelectorAll('#panel')
 const display = document.querySelector('#display p');
 panel.forEach(option => {
@@ -36,6 +37,14 @@ panel.forEach(option => {
 
         if(e.target.classList.contains('number')) getNumber(e);
         if(e.target.classList.contains('operator')) getOperator(e);
+        if(e.target.classList.contains('equal')) {
+            nums.push(digit)
+            result = operate(operator, +nums[0], +nums[1]) 
+            /* result = getResult(operator, nums); */
+            display.textContent = `${result}`;
+        }
+
+        /* display.textContent = ` ${operator}`; */
 
     })
 });
@@ -46,6 +55,12 @@ function getNumber(e) {
 }
 
 function getOperator(e) {
+    nums.push(digit);
     operator = e.target.textContent;
-    console.log(operator)
+    digit = '';
+    display.textContent = `${nums[0]} ${operator} ${digit}`;
 }
+
+/* function getResult(operator, nums) {
+    return operate(operator, +nums[0], +nums[1]) 
+} */

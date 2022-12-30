@@ -26,6 +26,7 @@ function operate (operator, a, b) {
     }
 }
 
+let operator;
 let digit = '';
 const panel = document.querySelectorAll('#panel')
 const display = document.querySelector('#display p');
@@ -34,6 +35,7 @@ panel.forEach(option => {
         console.log(e.target);
 
         if(e.target.classList.contains('number')) getNumber(e);
+        if(e.target.classList.contains('operator')) getOperator(e);
 
     })
 });
@@ -41,4 +43,9 @@ panel.forEach(option => {
 function getNumber(e) {
     digit += e.target.textContent;
     display.textContent = digit;
+}
+
+function getOperator(e) {
+    operator = e.target.textContent;
+    console.log(operator)
 }

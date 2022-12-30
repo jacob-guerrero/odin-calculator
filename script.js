@@ -26,11 +26,19 @@ function operate (operator, a, b) {
     }
 }
 
-const numbers = document.querySelectorAll('#panel')
-numbers.forEach(number => {
-    number.addEventListener ('click', (e) => {
+let digit = '';
+const panel = document.querySelectorAll('#panel')
+const display = document.querySelector('#display p');
+panel.forEach(option => {
+    option.addEventListener ('click', (e) => {
         console.log(e.target);
-        const display = document.querySelector('#display p');
-        display.textContent = e.target.textContent;
+
+        if(e.target.classList.contains('number')) getNumber(e);
+
     })
 });
+
+function getNumber(e) {
+    digit += e.target.textContent;
+    display.textContent = digit;
+}

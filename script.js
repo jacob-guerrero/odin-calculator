@@ -39,6 +39,7 @@ panel.forEach(option => {
         if(e.target.classList.contains('number')) getNumber(e);
         if(e.target.classList.contains('operator')) getOperator(e);
         if(e.target.classList.contains('equal')) {
+            if (!nums[0] || nums[1] === '' || digit === '') return;
             nums[1] = digit;
             /* if(!+nums[1]) return; */
             result = operate(operator, +nums[0], +nums[1])
@@ -57,6 +58,7 @@ function getNumber(e) {
 }
 
 function getOperator(e) {
+    if(digit === '') return;
     if(nums[0]) {
         nums[1] = digit;
         result = operate(operator, +nums[0], +nums[1]);

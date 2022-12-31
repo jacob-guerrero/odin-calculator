@@ -32,6 +32,7 @@ let nums = [];
 let result = '';
 const panel = document.querySelectorAll('#panel')
 const display = document.querySelector('#display p');
+display.textContent = '0';
 panel.forEach(option => {
     option.addEventListener ('click', (e) => {
         console.log(e.target);
@@ -41,13 +42,11 @@ panel.forEach(option => {
         if(e.target.classList.contains('equal')) {
             if (!nums[0] || nums[1] === '' || digit === '') return;
             nums[1] = digit;
-            /* if(!+nums[1]) return; */
             result = operate(operator, +nums[0], +nums[1])
             /* result = getResult(operator, nums); */
             display.textContent = `${result}`;
         }
-
-        /* display.textContent = ` ${operator}`; */
+        if(e.target.classList.contains('clear')) clear();
 
     })
 });
@@ -76,9 +75,16 @@ function getOperator(e) {
     display.textContent = `${nums[0]} ${operator}`;
 }
 
+function clear() {
+    operator = '';
+    digit = '';
+    nums = [];
+    result = '';
+    display.textContent = '0';
+}
+
 /* function getResult(operator, nums) {
-    if (nums[1] === '') return;
     nums[1] = digit;
-    if(!+nums[1]) return;
+    result = operate(operator, +nums[0], +nums[1]);
     return operate(operator, +nums[0], +nums[1]) 
 } */

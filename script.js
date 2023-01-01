@@ -61,6 +61,7 @@ panel.forEach(option => {
 });
 
 function getNumber(e) {
+    if(nums.length == 2 && result) clear();
     digit += e.target.textContent;
     display.textContent = digit;
     (+digit.match(/^[-+]?[0-9]+\.[0-9]+$/)) 

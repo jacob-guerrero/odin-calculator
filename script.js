@@ -40,11 +40,19 @@ panel.forEach(option => {
         if(e.target.classList.contains('number')) getNumber(e);
         if(e.target.classList.contains('operator')) getOperator(e);
         if(e.target.classList.contains('equal')) {
-            if (!nums[0] || nums[1] === '' || digit === '') return;
+            if (!nums[0] || nums[1] === '' || digit === '') return; // Validate inputs
+            
             nums[1] = digit;
+
+            if(operator === '÷' && nums[1] === '0') {
+                /* window.open('./') */
+                alert('You can not divide by zero!')
+                clear();
+            } else {
             result = operate(operator, +nums[0], +nums[1])
             /* result = getResult(operator, nums); */
-            display.textContent = `${result}`;
+            display.textContent = `${result}`;  
+            }
         }
         if(e.target.classList.contains('clear')) clear();
 
@@ -57,9 +65,15 @@ function getNumber(e) {
 }
 
 function getOperator(e) {
-    if(digit === '') return;
+    if(digit === '') return; // Validate input
     if(nums[0]) {
         nums[1] = digit;
+
+        if(operator === '÷' && nums[1] === '0') {
+            alert('You can not divide by zero!')
+            clear();
+            return
+        } else {
         result = operate(operator, +nums[0], +nums[1]);
         /* result = getResult(operator, nums); */
         nums[0] = result;
@@ -68,6 +82,7 @@ function getOperator(e) {
         display.textContent = `${result} ${operator}`;
         nums.pop();
         return
+        }
     }
     nums[0] = digit;
     operator = e.target.textContent;
@@ -88,3 +103,6 @@ function clear() {
     result = operate(operator, +nums[0], +nums[1]);
     return operate(operator, +nums[0], +nums[1]) 
 } */
+
+//Git add error handling and add comments
+//Git add round long decimals

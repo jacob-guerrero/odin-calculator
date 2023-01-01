@@ -51,7 +51,7 @@ panel.forEach(option => {
             } else {
             result = operate(operator, +nums[0], +nums[1])
             /* result = getResult(operator, nums); */
-            display.textContent = `${result}`;  
+            display.textContent = `${+result.toFixed(6)}`;  
             }
         }
         if(e.target.classList.contains('clear')) clear();
@@ -79,7 +79,7 @@ function getOperator(e) {
         nums[0] = result;
         operator = e.target.textContent;
         digit = '';
-        display.textContent = `${result} ${operator}`;
+        display.textContent = `${+result.toFixed(6)} ${operator}`;
         nums.pop();
         return
         }
@@ -103,6 +103,3 @@ function clear() {
     result = operate(operator, +nums[0], +nums[1]);
     return operate(operator, +nums[0], +nums[1]) 
 } */
-
-//Git add error handling and add comments
-//Git add round long decimals

@@ -55,6 +55,7 @@ panel.forEach(option => {
             }
         }
         if(e.target.classList.contains('clear')) clear();
+        if(e.target.classList.contains('point')) getNumber(e);
 
     })
 });
@@ -62,6 +63,9 @@ panel.forEach(option => {
 function getNumber(e) {
     digit += e.target.textContent;
     display.textContent = digit;
+    (+digit.match(/^[-+]?[0-9]+\.[0-9]+$/)) 
+    ? document.querySelector('.point').classList.add('disabled')
+    : document.querySelector('.point').classList.remove('disabled');
 }
 
 function getOperator(e) {

@@ -40,7 +40,7 @@ panel.forEach(option => {
         if(e.target.classList.contains('number')) getNumber(e);
         if(e.target.classList.contains('operator')) getOperator(e);
         if(e.target.classList.contains('equal')) {
-            if (!nums[0] || nums[1] === '' || digit === '') return; // Validate inputs
+            if (!nums[0] || nums[1] === '' || digit === '' || digit === '.') return; // Validate inputs
             
             nums[1] = digit;
 
@@ -65,8 +65,10 @@ panel.forEach(option => {
 });
 
 function getNumber(e) {
+    if(display.textContent === '0' && e.target.textContent === 0) return;
     if(nums.length == 2 && result) clear();
     digit += e.target.textContent;
+    if(digit === '.' && e.target.textContent === '.') digit = ('0' + digit);
     display.textContent = digit;
     putPoint();
 }
@@ -78,7 +80,7 @@ function getOperator(e) {
         if(nums.length == 2) nums.pop();
         return
     };
-    if(digit === '') return; // Validate input
+    if(digit === '' || digit === '.') return; // Validate input
     if(nums[0]) {
         nums[1] = digit;
 
@@ -102,6 +104,7 @@ function getOperator(e) {
     operator = e.target.textContent;
     digit = '';
     display.textContent = `${nums[0]} ${operator}`;
+    document.querySelector('.point').classList.remove('disabled');
 }
 
 function clear() {
@@ -110,6 +113,7 @@ function clear() {
     nums = [];
     result = '';
     display.textContent = '0';
+    putPoint();
 }
 
 function erase() {
@@ -138,7 +142,3 @@ function putPoint() {
     result = operate(operator, +nums[0], +nums[1]);
     return operate(operator, +nums[0], +nums[1]) 
 } */
-
-
-//Change operator
-//Points sequence

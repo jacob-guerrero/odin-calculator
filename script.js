@@ -51,7 +51,10 @@ panel.forEach(option => {
             } else {
             result = operate(operator, +nums[0], +nums[1])
             /* result = getResult(operator, nums); */
-            display.textContent = `${+result.toFixed(6)}`;  
+            nums[0] = result;
+            digit = '';
+            display.textContent = `${+result.toFixed(6)}`;
+            nums.pop();
             }
         }
         if(e.target.classList.contains('clear')) clear();
@@ -65,12 +68,15 @@ function getNumber(e) {
     if(nums.length == 2 && result) clear();
     digit += e.target.textContent;
     display.textContent = digit;
-    (+digit.match(/^[-+]?[0-9]+\.?[0-9]+$/)) 
-    ? document.querySelector('.point').classList.add('disabled')
-    : document.querySelector('.point').classList.remove('disabled');
+    putPoint();
 }
 
 function getOperator(e) {
+    if(digit === '' && result) {
+        operator = e.target.textContent;
+        display.textContent = `${+result.toFixed(6)} ${operator}`;
+        return
+    };
     if(digit === '') return; // Validate input
     if(nums[0]) {
         nums[1] = digit;
@@ -84,8 +90,8 @@ function getOperator(e) {
         /* result = getResult(operator, nums); */
         nums[0] = result;
         operator = e.target.textContent;
-        digit = '';
         display.textContent = `${+result.toFixed(6)} ${operator}`;
+        digit = '';
         nums.pop();
         return
         }

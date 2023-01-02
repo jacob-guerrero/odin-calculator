@@ -54,7 +54,7 @@ panel.forEach(option => {
             nums[0] = result;
             digit = '';
             display.textContent = `${+result.toFixed(6)}`;
-            nums.pop();
+            putPoint();
             }
         }
         if(e.target.classList.contains('clear')) clear();
@@ -75,6 +75,7 @@ function getOperator(e) {
     if(digit === '' && result) {
         operator = e.target.textContent;
         display.textContent = `${+result.toFixed(6)} ${operator}`;
+        if(nums.length == 2) nums.pop();
         return
     };
     if(digit === '') return; // Validate input
@@ -93,6 +94,7 @@ function getOperator(e) {
         display.textContent = `${+result.toFixed(6)} ${operator}`;
         digit = '';
         nums.pop();
+        document.querySelector('.point').classList.remove('disabled');
         return
         }
     }
@@ -112,12 +114,14 @@ function clear() {
 
 function erase() {
     if(nums.length == 2 && result) {
-        result = display.textContent.slice(0,-1);
+        /* result = display.textContent.slice(0,-1);
         nums[0] = result;
         digit = '';
         display.textContent = result;
-        nums.pop();
-    } else {
+        nums.pop(); */
+        clear();
+    }
+    if(!display.textContent.match(/^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)\s(\+|\-|÷|×)$/)) {
         digit = display.textContent.slice(0,-1);
         display.textContent = digit;
         putPoint();
@@ -125,7 +129,7 @@ function erase() {
 }
 
 function putPoint() {
-    (+digit.match(/^[-+]?[0-9]+\.[0-9]+$/)) 
+    (digit.match(/^[-+]?[0-9]*[.][0-9]*$/)) 
     ? document.querySelector('.point').classList.add('disabled')
     : document.querySelector('.point').classList.remove('disabled');
 }
@@ -135,6 +139,6 @@ function putPoint() {
     return operate(operator, +nums[0], +nums[1]) 
 } */
 
-//Initiate negative number
+
 //Change operator
 //Points sequence

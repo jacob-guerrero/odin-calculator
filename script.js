@@ -120,7 +120,14 @@ function erase() {
     } else {
         digit = display.textContent.slice(0,-1);
         display.textContent = digit;
+        putPoint();
     }
+}
+
+function putPoint() {
+    (+digit.match(/^[-+]?[0-9]+\.[0-9]+$/)) 
+    ? document.querySelector('.point').classList.add('disabled')
+    : document.querySelector('.point').classList.remove('disabled');
 }
 /* function getResult(operator, nums) {
     nums[1] = digit;

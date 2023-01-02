@@ -56,6 +56,7 @@ panel.forEach(option => {
         }
         if(e.target.classList.contains('clear')) clear();
         if(e.target.classList.contains('point')) getNumber(e);
+        if(e.target.classList.contains('erase')) erase();
 
     })
 });
@@ -64,7 +65,7 @@ function getNumber(e) {
     if(nums.length == 2 && result) clear();
     digit += e.target.textContent;
     display.textContent = digit;
-    (+digit.match(/^[-+]?[0-9]+\.[0-9]+$/)) 
+    (+digit.match(/^[-+]?[0-9]+\.?[0-9]+$/)) 
     ? document.querySelector('.point').classList.add('disabled')
     : document.querySelector('.point').classList.remove('disabled');
 }
@@ -103,8 +104,24 @@ function clear() {
     display.textContent = '0';
 }
 
+function erase() {
+    if(nums.length == 2 && result) {
+        result = display.textContent.slice(0,-1);
+        nums[0] = result;
+        digit = '';
+        display.textContent = result;
+        nums.pop();
+    } else {
+        digit = display.textContent.slice(0,-1);
+        display.textContent = digit;
+    }
+}
 /* function getResult(operator, nums) {
     nums[1] = digit;
     result = operate(operator, +nums[0], +nums[1]);
     return operate(operator, +nums[0], +nums[1]) 
 } */
+
+//Initiate negative number
+//Change operator
+//Points sequence

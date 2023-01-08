@@ -142,3 +142,8 @@ function putPoint() {
     result = operate(operator, +nums[0], +nums[1]);
     return operate(operator, +nums[0], +nums[1]) 
 } */
+
+//Keyboard support
+document.addEventListener('keydown', (e) => {
+        console.log(e.code);
+})

@@ -145,5 +145,66 @@ function putPoint() {
 
 //Keyboard support
 document.addEventListener('keydown', (e) => {
-        console.log(e.code);
+        console.log(e);
+        const keyNum = document.querySelectorAll('.number');
+        const keyOp = document.querySelectorAll('.operator');
+        switch(e.code) {
+            case 'Numpad7':
+                keyNum[0].click();
+                break;
+            case 'Numpad8':
+                keyNum[1].click();
+                break;
+            case 'Numpad9':
+                keyNum[2].click();
+                break;
+            case 'Numpad4':
+                keyNum[3].click();
+                break;
+            case 'Numpad5':
+                keyNum[4].click();
+                break;
+            case 'Numpad6':
+                keyNum[5].click();
+                break;
+            case 'Numpad1':
+                keyNum[6].click();
+                break;
+            case 'Numpad2':
+                keyNum[7].click();
+                break;
+            case 'Numpad3':
+                keyNum[8].click();
+                break;
+            case 'Numpad0':
+                keyNum[9].click();
+                break;
+            case 'NumpadDecimal':
+                document.querySelector('.point').click();
+                break;
+            case 'NumpadEnter':
+            case 'Enter':
+                document.querySelector('.equal').click();
+                break;
+            case 'NumpadAdd':
+                keyOp[0].click();
+                break;
+            case 'NumpadSubtract':
+                keyOp[1].click();
+                break;
+            case 'NumpadMultiply':
+                keyOp[2].click();
+                break;
+            case 'NumpadDivide':
+                keyOp[3].click();
+                break;
+            case 'Backspace':
+                document.querySelector('.erase').click();
+                break;
+            case 'KeyC':
+                document.querySelector('.clear').click();
+                break;
+            default:
+                break;
+        }
 })

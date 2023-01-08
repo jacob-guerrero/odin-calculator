@@ -130,6 +130,7 @@ function erase() {
         display.textContent = digit;
         putPoint();
     }
+    if(display.textContent === '' && !nums[0]) display.textContent = '0';
 }
 
 function putPoint() {

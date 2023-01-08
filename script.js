@@ -149,33 +149,43 @@ document.addEventListener('keydown', (e) => {
         const keyNum = document.querySelectorAll('.number');
         const keyOp = document.querySelectorAll('.operator');
         switch(e.code) {
+            case 'Digit7':
             case 'Numpad7':
                 keyNum[0].click();
                 break;
+            case 'Digit8':
             case 'Numpad8':
                 keyNum[1].click();
                 break;
+            case 'Digit9':
             case 'Numpad9':
                 keyNum[2].click();
                 break;
+            case 'Digit4':
             case 'Numpad4':
                 keyNum[3].click();
                 break;
+            case 'Digit5':
             case 'Numpad5':
                 keyNum[4].click();
                 break;
+            case 'Digit6':
             case 'Numpad6':
                 keyNum[5].click();
                 break;
+            case 'Digit1':
             case 'Numpad1':
                 keyNum[6].click();
                 break;
+            case 'Digit2':
             case 'Numpad2':
                 keyNum[7].click();
                 break;
+            case 'Digit3':
             case 'Numpad3':
                 keyNum[8].click();
                 break;
+            case 'Digit0':
             case 'Numpad0':
                 keyNum[9].click();
                 break;

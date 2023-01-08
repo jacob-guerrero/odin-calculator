@@ -65,7 +65,7 @@ panel.forEach(option => {
 });
 
 function getNumber(e) {
-    if(display.textContent === '0' && e.target.textContent === 0) return;
+    if(display.textContent === '0' && e.target.textContent === '0') return;
     if(nums.length == 2 && result) clear();
     digit += e.target.textContent;
     if(digit === '.' && e.target.textContent === '.') digit = ('0' + digit);

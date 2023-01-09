@@ -34,6 +34,7 @@ h1 {
 
 #display {
     border: 1px solid black;
+    border-radius: 4px;
     width: 80vw;
     height: 7vh;
     padding: 1rem;
@@ -46,33 +47,38 @@ h1 {
     width: 80vw;
     height: 80vw;
     display: flex;
-
+    padding: 3px;
+    justify-content: space-around;
 }
 
 .numbers {
     display: flex;
-    width: 60vw;
-    height: 80vw;
+    width: calc(60vw - 6px);
+    height: calc(80vw - 6px);
     flex-wrap: wrap;
-
+    justify-content: space-evenly;
 }
 .btn {
     border: 1px solid black;
-    width: calc(60vw/3);
-    height: calc(60vw/3);
+    border-radius: 4px;
+    width: calc((60vw/3) - 3px);
+    height: calc((60vw/3) - 3px);
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .controls {
-    width: 20vw;
-    height: 80vw;
+    width: calc(20vw - 6px);
+    height: calc(80vw - 6px);
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-.btn.operation {
-    flex: 1 1;
+.controls .btn {
+    width: calc((20vw) - 3px);
+    height: calc((80vw/6) - 3px);
 }
 
 .disabled {

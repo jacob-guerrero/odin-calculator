@@ -162,3 +162,24 @@ h1 {
         height: calc((100%/6) - 3px);
     }
 }
+
+@media (min-width: 800px) {
+    #title {
+        height: 25vh;
+    }
+    h1 {
+        font-size: 3.5rem;
+    }
+    
+    #container {
+        height: 75vh;
+    }
+
+    #display p {
+        font-size: 2.2rem;
+    }
+
+    #panel {
+        font-size: 1.8rem;
+    }
+}
